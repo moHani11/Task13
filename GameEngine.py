@@ -3,7 +3,7 @@ import numpy as np
 from ultralytics import YOLO
 from time import sleep
 
-model = YOLO("yolov8n.pt")
+model = YOLO("D:/courses/MIA_training/task13/group_repo/best.pt")# Replace this with the path of the downloaded model
 
 
 X_OFFSET = 20
@@ -79,7 +79,8 @@ if not cap.isOpened():
 
 while True:
     ret, frame = cap.read()
-    frame = cv2.resize(frame, (900, 500))
+    frame = cv2.resize(frame,(1100,800)) ## setting a relatively high ressolution to overcome the inaccuaracy in our model
+
     if not ret:
         print("Error no frame")
         break
@@ -92,7 +93,7 @@ while True:
 
     if winner == -1: 
 
-        results = model.predict(frame, conf = 0.4,  vid_stride = 20, verbose=False, max_det = 10)
+        results = model.predict(frame, conf = 0.833,  vid_stride = 20, verbose=False, max_det = 10)
 
         for result in results:
                 boxes = result.boxes
@@ -100,7 +101,7 @@ while True:
                 for box in boxes:
                     conf = box.conf.cpu().numpy()
                     cls = box.cls.cpu().numpy().astype(int)
-                    if cls == 77 and turn == 1: # cls will be changed when we train the model and get the right class number
+                    if  cls == 1 and turn == 1: # cls 1 refer to the x class 
                         label = model.names[cls[0]]
                         print(cls)
                         x1, y1, x2, y2 = box.xyxy[0].cpu().numpy().astype(int)
@@ -114,7 +115,7 @@ while True:
                         x_cords = (cx, cy) # setting the X coordinates
                         
 
-                    elif cls == 77 and turn == 0:  # cls will be changed when we train the model and get the right class number
+                    elif cls == 0 and turn == 0 and conf > 0.877:  # cls 0 refer to the x class 
                         label = model.names[cls[0]]
                         print(cls)
                         x1, y1, x2, y2 = box.xyxy[0].cpu().numpy().astype(int)

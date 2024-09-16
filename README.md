@@ -6,7 +6,7 @@
 
 - A description for our code in this README file
 - Python code used as the game engine
-- **[Drive link](https://drive.google.com/drive/folders/1c8QZ-NIJ0zkRA0k8OvTMj14AMF7L-dT7)** for the dataset we made and used to train the model
+- **[Drive link](https://drive.google.com/drive/folders/15czbHrTy5nGfEeh9xJplvANYbhunGmsj)** for the dataset we made and used to train the model
 
 ----
 ----
@@ -47,3 +47,16 @@ Gridlines are dynamically drawn to divide the frame into 3x3 sections representi
 #### Declaring a Winner:
 
 - When a player wins, the game displays a message (X Won, O Won, or Draw) on the screen. After a brief countdown the game resets for a new round.
+
+---
+---
+
+## Problems Faced 
+
+- It seems like we didn't make a dataset that was big enough to train our model so the model is not that accurate, it can detect false Xs and Os sometimes.
+
+## How i Overcomed the Problem 
+
+- I set a relatively high minimum confidence value for the symbol detection, so it will be hard for the model to make false detections.
+
+- I reshaped the size of the frame to a relatively higher resolution for more clear processing for th symbols(It may have slowed down the processing a little bit)
