@@ -7,6 +7,7 @@
 - A description for our code in this README file
 - Python code used as the game engine
 - **[Drive link](https://drive.google.com/drive/folders/15czbHrTy5nGfEeh9xJplvANYbhunGmsj)** for the dataset we made and used to train the model
+- Link for the [Latex Documentation](https://www.overleaf.com/project/66e7633685a871013e8b6597)
 
 ----
 ----
